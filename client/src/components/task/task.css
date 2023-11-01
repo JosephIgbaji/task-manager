@@ -1,0 +1,37 @@
+.mytask{
+    max-width: 500px;
+    background-color: white;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    padding-left: 1rem;
+    margin: 0 auto;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    margin-bottom: 1.5rem;
+}
+
+.task-left{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.task-right{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.color-green{
+    color: green;
+}
+
+.color-red{
+    color: rgb(164, 28, 28);
+}
+
+.cursor{
+    cursor: pointer;
+}
