@@ -31,3 +31,23 @@
     display: flex;
     flex-direction: column;
 }
+
+@media screen and (max-width: 540px){
+    .edit-form-control{
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin-bottom: 25px;
+    }
+    .label-title{
+        background-color: #4d4d4d;
+        color: #fff;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+    }
+
+    .task-id{
+        font-size: 13px;
+        margin-top: 0;
+    }
+}

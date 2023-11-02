@@ -112,3 +112,13 @@ footer {
   margin-top: 30px;
   text-align: center;
 }
+
+@media screen and (max-width: 540px){
+  .container {
+    width: 320px;
+  }
+
+  .header {
+    flex-direction: column;
+  }
+}

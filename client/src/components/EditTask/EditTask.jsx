@@ -48,11 +48,11 @@ const EditTask = ({ task, onShowEdit, onShowTask }) => {
     <div className="form-section">
       <form className="edit-form" onSubmit={handleEditTask}>
         <div className="edit-form-control">
-          <p>TASK ID</p>
-          <p>{task?.id}</p>
+          <p className="label-title">Task ID</p>
+          <p className="task-id">{task?.id}</p>
         </div>
         <div className="edit-form-control">
-          <label>Task</label>
+          <label className="label-title">Task</label>
           <input
             type="text"
             value={text}
@@ -60,7 +60,7 @@ const EditTask = ({ task, onShowEdit, onShowTask }) => {
           />
         </div>
         <div className="edit-form-control">
-          <label>Day & Time</label>
+          <label className="label-title">Day & Time</label>
           <input
             type="text"
             value={day}
@@ -68,7 +68,7 @@ const EditTask = ({ task, onShowEdit, onShowTask }) => {
           />
         </div>
         <div className="edit-form-control">
-          <label>Completed</label>
+          <label className="label-title">Completed</label>
           <input
             type="checkbox"
             value={completed}
