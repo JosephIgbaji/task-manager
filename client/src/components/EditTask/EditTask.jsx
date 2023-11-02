@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./EditTask.css";
 import Button from "../Button/Button";
 
@@ -16,14 +16,14 @@ const EditTask = ({ task, onShowEdit, onShowTask }) => {
   const handleEditTask = (e) => {
     e.preventDefault();
 
-    fetch(`http://localhost:5000/api/v1/tasks/${task.id}`, {
+    fetch(`/api/v1/tasks/${task.id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ text, completed, day }),
     })
       .then((response) => response.json())
       .then((json) => console.log(json));
-    console.log(`Task with ID: ${task.id} has been updated`);
+    // console.log(`Task with ID: ${task.id} has been updated`);
 
     // if (task && day) {
     //   fetch("http://localhost:5000/api/v1/tasks", {
@@ -38,8 +38,8 @@ const EditTask = ({ task, onShowEdit, onShowTask }) => {
     //   setTask("");
     //   setDay("");
     // }
-    console.log(completed);
-    console.log(text);
+    // console.log(completed);
+    // console.log(text);
     onShowEdit();
     onShowTask();
     window.localStorage.clear();

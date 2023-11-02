@@ -27,23 +27,22 @@ function App() {
   const handleSetTaskToEdit = (task) => {
     setTaskToEdit(task);
   };
-  // useEffect(() => {
-  //   fetch("http://localhost:5000/api/v1/tasks")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       setTasks(data);
-  //     });
-  // }, []);
-
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/v1/tasks")
-      .then((response) => {
-        setTasks(response.data);
-      })
-      .catch((err) => console.log(err));
-  }, [<EditTask />]);
+    fetch("/api/v1/tasks")
+      .then((res) => res.json())
+      .then((data) => {
+        setTasks(data);
+      });
+  }, [showEditTask]);
+
+  // useEffect(() => {
+  //   axios
+  //     .get("/api/v1/tasks")
+  //     .then((response) => {
+  //       setTasks(response.data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, [<EditTask />]);
 
   useEffect(() => {
     const id = window.localStorage.getItem("taskID");
@@ -57,7 +56,7 @@ function App() {
   }, [tasks?.length]);
 
   const handleDeleteTask = (task) => {
-    fetch(`http://localhost:5000/api/v1/tasks/${task.id}`, {
+    fetch(`/api/v1/tasks/${task.id}`, {
       method: "DELETE",
     })
       .then((response) => response.json())

@@ -34,7 +34,7 @@ const updateTask = (req, res) => {
     }
   });
   writeData(tasks);
-  res.send(updatedTask);
+  res.send({ taskid: updatedTask.id });
 };
 
 //delete task

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./AddTask.css";
 
 const AddTask = ({ allTask, setAllTask, onToggle }) => {
@@ -9,7 +9,7 @@ const AddTask = ({ allTask, setAllTask, onToggle }) => {
     e.preventDefault();
 
     if (task && day) {
-      fetch("http://localhost:5000/api/v1/tasks", {
+      fetch("/api/v1/tasks", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text: task, day }),
