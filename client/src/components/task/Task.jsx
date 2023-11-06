@@ -14,14 +14,21 @@ const Task = ({
     setTaskToEdit(task);
     onShowEdit();
     onShowTask();
-    window.localStorage.setItem("taskID", task.id);
+    window.localStorage.setItem("taskID", task._id);
   };
   return (
     <div className="mytask">
       <div className="task-left">
-        {task.completed && <i className="color-green bi bi-check-circle"></i>}
+        {/* {task.completed && <i className="color-green bi bi-check-circle"></i>} */}
+        <i
+          className={
+            task.completed
+              ? "color-green bi bi-check-circle"
+              : "transparent bi bi-check-circle"
+          }
+        ></i>
         <div className="tasks">
-          <h3>{task.text}</h3>
+          <h3>{task.name}</h3>
           <p>{task.day}</p>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 import Tasks from "./components/tasks/Tasks";
 import AddTask from "./components/AddTask/AddTask";
 import Header from "./components/Header/Header";
@@ -49,21 +49,21 @@ function App() {
     if (id && tasks?.length > 0) {
       setShowEditTask(true);
       setShowTask(false);
-      const tsk = tasks.filter((todo) => todo.id == id);
-      console.log("tsk", tsk);
+      const tsk = tasks.filter((todo) => todo._id === id);
+      // console.log("tsk", tsk);
       setTaskToEdit(tsk[0]);
     }
   }, [tasks?.length]);
 
   const handleDeleteTask = (task) => {
-    fetch(`/api/v1/tasks/${task.id}`, {
+    fetch(`/api/v1/tasks/${task._id}`, {
       method: "DELETE",
     })
       .then((response) => response.json())
       .then((json) => console.log(json));
-    console.log(`Task with ID: ${task.id} is deleted`);
+    console.log(`Task with ID: ${task._id} is deleted`);
 
-    setTasks(tasks.filter((todo) => todo.id !== task.id));
+    setTasks(tasks.filter((todo) => todo._id !== task._id));
   };
 
   return (

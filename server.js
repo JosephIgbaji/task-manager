@@ -1,14 +1,13 @@
-const express = require("express");
 const path = require("path");
 
-require("dotenv").config();
+const express = require("express");
 const cors = require("cors");
+require("dotenv").config();
 
 const tasks = require("./routes/tasks");
+const connectDb = require("./database/connect");
 
 const server = express();
-
-const PORT = process.env.PORT || 5000;
 
 server.use(express.static(path.resolve(__dirname, "./client/build")));
 
@@ -22,6 +21,15 @@ server.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
 });
 
-server.listen(PORT, () => {
-  console.log(`Server listening on ${PORT}`);
-});
+const start = async () => {
+  try {
+    await connectDb(process.env.MONGO_URI);
+    server.listen(process.env.PORT, () => {
+      console.log(`Server listening on ${process.env.PORT}`);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+start();

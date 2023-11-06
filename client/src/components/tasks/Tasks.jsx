@@ -7,7 +7,7 @@ const Tasks = ({ tasks, onDelete, onShowEdit, onShowTask, setTaskToEdit }) => {
       {tasks.map((task) => (
         <Task
           task={task}
-          key={task.id}
+          key={task._id}
           onDeleteTask={onDelete}
           onShowEdit={onShowEdit}
           onShowTask={onShowTask}

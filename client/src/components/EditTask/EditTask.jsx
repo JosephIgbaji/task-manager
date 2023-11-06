@@ -3,7 +3,7 @@ import "./EditTask.css";
 import Button from "../Button/Button";
 
 const EditTask = ({ task, onShowEdit, onShowTask }) => {
-  const [text, setText] = useState(task?.text);
+  const [name, setName] = useState(task?.name);
   const [day, setDay] = useState(task?.day);
   const [completed, setCompleted] = useState(task?.completed);
 
@@ -16,10 +16,10 @@ const EditTask = ({ task, onShowEdit, onShowTask }) => {
   const handleEditTask = (e) => {
     e.preventDefault();
 
-    fetch(`/api/v1/tasks/${task.id}`, {
+    fetch(`/api/v1/tasks/${task._id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text, completed, day }),
+      body: JSON.stringify({ name, completed, day }),
     })
       .then((response) => response.json())
       .then((json) => console.log(json));
@@ -49,14 +49,14 @@ const EditTask = ({ task, onShowEdit, onShowTask }) => {
       <form className="edit-form" onSubmit={handleEditTask}>
         <div className="edit-form-control">
           <p className="label-title">Task ID</p>
-          <p className="task-id">{task?.id}</p>
+          <p className="task-id">{task?._id}</p>
         </div>
         <div className="edit-form-control">
           <label className="label-title">Task</label>
           <input
             type="text"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
         </div>
         <div className="edit-form-control">
@@ -72,6 +72,7 @@ const EditTask = ({ task, onShowEdit, onShowTask }) => {
           <input
             type="checkbox"
             value={completed}
+            checked={completed}
             onChange={(e) => setCompleted(e.currentTarget.checked)}
           />
         </div>
